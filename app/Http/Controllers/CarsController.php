@@ -47,10 +47,15 @@ class CarsController extends Controller
 
         // $car->save();
 
+        $imageName = time() . '-' . $request->name . '.' . $request->image->extension();
+
+        $request->image->move(public_path('images'), $imageName);
+
         $car = Car::create([
             'name' => $request->name,
             'founded' => $request->founded,
             'description' => $request->description,
+            'image_path' => $imageName,
         ]);
 
         return redirect('/cars');

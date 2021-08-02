@@ -13,11 +13,11 @@
         <form action="/cars" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="block">
-                {{-- <input 
+                <input 
                     type="file"
                     class="block shadow-5xl mb-10 p-2 w-80 italic placeholder-gray-400"
                     name="image"
-                    placeholder="Upload image..."> --}}
+                    placeholder="Upload image...">
 
                 <input 
                     type="text"
