@@ -2,8 +2,11 @@
 
 @section('content')
     <div class="m-auto w-4/5 py-24">
+
+        @if (Auth::user())
+
         <div class="text-center">
-            <h1 class="text-5xl  bold border inline-block border-gray-500 px-5 rounded-md">
+            <h1 class="text-5xl  bold border inline-block border-gray-500 p-5 rounded-md">
                 All Cars
             </h1>
         </div>
@@ -34,29 +37,37 @@
 
                     <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="200px" class="border border-gray-700 p-2 mb-2">
 
-                    <div class="flex">
+                    @if (isset(Auth::user()->id))
+                        <div class="flex">
 
-                        <a 
-                            href="cars/{{ $car->id }}/edit"
-                            class="text-white font-bold bg-blue-500 p-3 rounded-md mr-2">
-                            Edit car info &rarr;
-                        </a>
-                    
-                        <form action="cars/{{ $car->id }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="text-white font-bold bg-red-500 p-3 rounded-md">
-                                Delete car &rarr;
-                            </button>
-                        </form>
+                            <a 
+                                href="cars/{{ $car->id }}/edit"
+                                class="text-white font-bold bg-blue-500 p-3 rounded-md mr-2">
+                                Edit car info &rarr;
+                            </a>
+                        
+                            <form action="cars/{{ $car->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="text-white font-bold bg-red-500 p-3 rounded-md">
+                                    Delete car &rarr;
+                                </button>
+                            </form>
 
-                    </div>
+                        </div>
+                    @endif
 
                     <hr class=" mt-4 mb-8">
                 </div>
             @endforeach
-        </div>  
+        </div>
+        @else
+            <div class="text-center">
+                <h1 class="text-5xl  bold border inline-block border-gray-500 p-5 rounded-md">
+                    You need to log in first!
+                </h1>
+            </div>
+        @endif
     </div>
-
     
 @endsection
