@@ -40,6 +40,9 @@
                     <button type="submit" class="block shadow-5xl mb-10 p-2 w-80 uppercase text-white font-bold bg-blue-500 rounded-md">
                         Submit
                     </button>
+                    <a href="/cars" class="block shadow-5xl mb-10 p-2 w-80 uppercase text-white font-bold bg-gray-700 rounded-md text-center">
+                        Back
+                    </a>
             </div>
         </form>
     </div>

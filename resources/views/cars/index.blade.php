@@ -32,15 +32,14 @@
                         Description: {{ $car->description }}
                     </p>
 
-                    <div class="py-5">
+                    <div class="flex">
+
                         <a 
                             href="cars/{{ $car->id }}/edit"
-                            class="text-white font-bold bg-blue-500 p-3 rounded-md">
+                            class="text-white font-bold bg-blue-500 p-3 rounded-md mr-2">
                             Edit car info &rarr;
                         </a>
-                    </div>
-
-                    <div class="py-5">
+                    
                         <form action="cars/{{ $car->id }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -48,6 +47,7 @@
                                 Delete car &rarr;
                             </button>
                         </form>
+
                     </div>
 
                     <hr class=" mt-4 mb-8">
