@@ -35,7 +35,9 @@
                         Description: {{ $car->description }}
                     </p>
 
-                    <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="200px" class="border border-gray-700 p-2 mb-2">
+                    @if (!empty($car->image_path))
+                            <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="200px" class="border border-gray-700 p-2 mb-2">
+                    @endif
 
                     @if (isset(Auth::user()->id))
                         <div class="flex">

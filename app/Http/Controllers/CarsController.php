@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CarsController extends Controller
 {
@@ -44,6 +45,13 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'founded' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+        ]);
+
         $imageName = time() . '-' . $request->name . '.' . $request->image->extension();
 
         $request->image->move(public_path('images'), $imageName);
