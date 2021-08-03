@@ -29,6 +29,18 @@
                             <strong>Description:</strong> {{ $car->description }}
                         </p>
 
+                        <div class="my-4">
+                            <p class="text-2xl text-gray-700 py-6 leading-8">
+                                <strong>Models:</strong>
+                                @forelse ($car->carModels as $models)
+                                    <p class="inline">{{ $models->model_name }}</p> 
+                                @empty
+                                    <p>No other Models</p>
+                                @endforelse
+                            </p>
+                        </div>
+                        
+
                         @if (!empty($car->image_path))
                                 <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="80%" class="border border-gray-700 p-2 mb-2">
                         @endif

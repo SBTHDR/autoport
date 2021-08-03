@@ -10,4 +10,9 @@ class Car extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'founded', 'description', 'image_path', 'user_id'];
+
+    public function carModels()
+    {
+        return $this->hasMany(CarModel::class);
+    }
 }
