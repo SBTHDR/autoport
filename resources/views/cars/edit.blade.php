@@ -3,8 +3,8 @@
 @section('content')
     <div class="m-auto w-4/8 py-24">
         <div class="text-center">
-            <h1 class="text-5xl  bold border inline-block border-gray-500 px-5 rounded-md">
-                Edit a car
+            <h1 class="text-5xl  bold border inline-block border-gray-500 p-5 rounded-md">
+                Edit car info
             </h1>
         </div>
     </div>

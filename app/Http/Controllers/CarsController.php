@@ -47,9 +47,9 @@ class CarsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'founded' => 'required',
+            'founded' => 'required|numeric',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image',
         ]);
 
         $imageName = time() . '-' . $request->name . '.' . $request->image->extension();
@@ -75,7 +75,9 @@ class CarsController extends Controller
      */
     public function show($id)
     {
-        //
+        $car = Car::findOrFail($id);
+
+        return view('cars.show')->with('car', $car);
     }
 
     /**
