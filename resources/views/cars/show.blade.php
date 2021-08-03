@@ -35,17 +35,32 @@
                             <strong>Description:</strong> {{ $car->description }}
                         </p>
 
-                        <div class="my-4">
-                            <p class="text-2xl text-gray-700 py-6 leading-8">
-                                <strong>Models:</strong>
-                                @forelse ($car->carModels as $models)
-                                    <p class="inline">{{ $models->model_name }}</p> 
-                                @empty
-                                    <p>No other Models</p>
-                                @endforelse
-                            </p>
-                        </div>
-                        
+                        <table class="table-auto mb-5">
+                            <tr class="bg-blue-100">
+                                <th class="w-1/2 border-4 border-gray-500">
+                                    Models
+                                </th>
+                                <th class="w-1/2 border-4 border-gray-500">
+                                    Engines
+                                </th>                            
+                            </tr>
+                            @forelse ($car->carModels as $model)
+                                <tr>
+                                    <td class="border-4 border-gray-500">
+                                        {{ $model->model_name }}
+                                    </td>
+                                    <td class="border-4 border-gray-500">
+                                        @foreach ($car->engines as $engine)
+                                            @if ($model->id == $engine->id)
+                                                {{ $engine->engine_name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @empty
+                                <p class="p-2">No Aditional Details found.</p>
+                            @endforelse
+                        </table>
 
                         @if (!empty($car->image_path))
                                 <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="80%" class="border border-gray-700 p-2 mb-2">
