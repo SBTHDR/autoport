@@ -25,6 +25,12 @@
                             </h2>
                         </a>
 
+                        @if (isset($car->headquarter))
+                            <p class="text-2xl text-gray-700 py-6 leading-8">
+                                <strong>Headquarter:</strong> {{ $car->headquarter->country }}
+                            </p>
+                        @endif                
+
                         <p class="text-2xl text-gray-700 py-6 leading-8">
                             <strong>Description:</strong> {{ $car->description }}
                         </p>
