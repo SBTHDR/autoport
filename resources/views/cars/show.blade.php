@@ -35,12 +35,16 @@
                             <strong>Description:</strong> {{ $car->description }}
                         </p>
 
+                        <p class="text-2xl text-gray-700 py-6 leading-8">
+                            <strong>Aditional Details:</strong> 
+                        </p>
+
                         <table class="table-auto mb-5">
                             <tr class="bg-blue-100">
-                                <th class="w-1/2 border-4 border-gray-500">
+                                <th class="w-1/6 border-4 border-gray-500">
                                     Models
                                 </th>
-                                <th class="w-1/2 border-4 border-gray-500">
+                                <th class="w-1/6 border-4 border-gray-500">
                                     Engines
                                 </th>                            
                             </tr>
@@ -58,12 +62,22 @@
                                     </td>
                                 </tr>
                             @empty
-                                <p class="p-2">No Aditional Details found.</p>
+                                <p class="inline mb-5 text-lg">No Aditional Details found.</p>
                             @endforelse
                         </table>
 
+                        <p class="text-2xl text-gray-700 py-6 leading-8">
+                            <strong>Types:</strong> 
+                        </p>
+
+                        @forelse ($car->products as $product)
+                            <p class="inline mb-5 text-lg">{{ $product->name }}</p>.
+                        @empty
+                            <p class="inline mb-5 text-lg">No Typs found.</p>.
+                        @endforelse
+
                         @if (!empty($car->image_path))
-                                <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="80%" class="border border-gray-700 p-2 mb-2">
+                                <img src="{{ asset('images/' . $car->image_path) }}" alt="" width="80%" class="border border-gray-700 p-2 my-2">
                         @endif
                     </div>
             </div>
